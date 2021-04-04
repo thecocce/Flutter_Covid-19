@@ -104,12 +104,13 @@ class _ListCountryViewState extends State<ListCountryView>
                         if (_countries[index].countryInfo != null &&
                             util.url(_countries[index].countryInfo.flag) &&
                             _countries[index].country != "World") {
-                          leading = Image.asset(
-                            "assets/" +
-                                _countries[index].countryInfo.flag.split(
-                                    "https://corona.lmao.ninja/assets/img/flags/")[1],
-                            height: 24,
-                          );
+                              var country = _countries[index].countryInfo.flag.split(
+                                        "https://disease.sh/assets/img/flags/")[1];
+                              print(country);
+                              leading = Image.asset(
+                                "assets/" + country,
+                                height: 24,
+                              );
                         }
                         return Card(
                           elevation: 1,

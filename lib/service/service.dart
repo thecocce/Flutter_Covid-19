@@ -19,7 +19,7 @@ Future<Nazionale> getNazionaleLatest() async {
   List<Nazionale> temp = [];
   try {
     Response response =
-        await get(dpc + "dpc-covid19-ita-andamento-nazionale-latest.json");
+        await get(Uri.parse(dpc + "dpc-covid19-ita-andamento-nazionale-latest.json"));
     List data = jsonDecode(response.body);
     temp = data.map((i) => Nazionale.fromJson(i)).toList();
     result = temp.first;
@@ -34,7 +34,7 @@ Future<Nazionale> getNazionaleLatest() async {
 Future<List<Nazionale>> getRegionaleLatest() async {
   List<Nazionale> result = [];
   try {
-    Response response = await get(dpc + "dpc-covid19-ita-regioni-latest.json");
+    Response response = await get(Uri.parse(dpc + "dpc-covid19-ita-regioni-latest.json"));
     List data = jsonDecode(response.body);
     result = data.map((i) => Nazionale.fromJson(i)).toList();
     if (result.length > 1) {
@@ -53,7 +53,7 @@ Future<List<Nazionale>> getRegionaleLatest() async {
 Future<List<Country>> getCountries() async {
   List<Country> result = [];
   try {
-    Response response = await get(novelCovidV2 + "countries");
+    Response response = await get(Uri.parse(novelCovidV2 + "countries"));
     List data = jsonDecode(response.body);
     result = data.map((i) => Country.fromJson(i)).toList();
     if (result.length > 1) {
@@ -91,7 +91,7 @@ Future<List<Country>> getCountries() async {
 Future<List<States>> getStates() async {
   List<States> result = [];
   try {
-    Response response = await get(novelCovidV2 + "states");
+    Response response = await get(Uri.parse(novelCovidV2 + "states"));
     List data = jsonDecode(response.body);
     result = data.map((i) => States.fromJson(i)).toList();
     if (result.length > 1) {
@@ -110,7 +110,7 @@ Future<CountryTrend> getCountryHistorical(String countryName) async {
     return null;
   }
   try {
-    Response response = await get(novelCovidV2 + "historical/" + countryName);
+    Response response = await get(Uri.parse(novelCovidV2 + "historical/" + countryName));
     dynamic data = jsonDecode(response.body);
 
     Map<String, dynamic> cases = data["timeline"]["cases"];

@@ -28,7 +28,7 @@ class TrendData {
 class _TrendChart extends State<TrendChart> {
   Future<CountryTrend> _trend;
 
-  List<TrendData> _trendData = List();
+  List<TrendData> _trendData = [];
 
   @override
   void initState() {
@@ -209,7 +209,7 @@ class _TrendChart extends State<TrendChart> {
 
   LineChartBarData _fromData(
       Map<DateTime, int> data, Color color, CountryTrend trend) {
-    var listData = List<FlSpot>();
+    var listData = <FlSpot>[];
     data.values
         .toList()
         .sublist(startIndex(trend))
